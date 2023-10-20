@@ -1,36 +1,106 @@
-This is a [Description of the Project].
+<div align="center">
+  <h1>Next-Genesis: A Next.js Starter Template 🚀</h1>
+</div>
 
-## Getting Started
+## Table of Contents
 
-First, run the development server:
+- [Overview](#overview)
+- [Tooling](#tooling-🛠️)
+  - [Code Quality](#code-quality-🔍)
+    - [ESLint plugins and configs](#eslint-plugins-and-configs)
+  - [Style Reusability](#style-reusability-🎨)
+  - [Validation](#validation-🛡️)
+- [Utilities](#utilities-🧰)
+- [Getting Started](#getting-started-🏁)
+
+## Overview
+
+Next-Genesis is a Next.js Starter Template equipped with pre-configured development tools and libraries to kickstart your web development projects efficiently. This template is designed to save you time and streamline the development process. Below, you'll find a detailed overview of the tooling and how to get started.
+
+## Tooling 🛠️
+
+### Code Quality 🔍
+
+Next-Genesis ensures code quality by integrating several essential tools:
+
+- [**Prettier**](https://prettier.io) : Prettier is a formatter that helps maintain a consistent code style, making your codebase clean and easy to read.
+
+- [**ESLint**](https://eslint.org) : ESLint is a powerful code linter that helps catch errors, enforce code style, and maintain code quality.
+
+- [**Husky**](https://typicode.github.io/husky/) : Husky provides Git hooks that prevent bad git commit, git push, and more by running scripts.
+
+- [**Lint-Staged**](https://github.com/lint-staged/lint-staged#readme) : Lint-Staged allows you to run linters on pre-committed files, ensuring that only clean and properly formatted code is committed.
+
+- [**CommitLint**](https://commitlint.js.org/#/) : CommitLint enforces a consistent commit message format, enhancing collaboration and version control.
+
+#### ESLint plugins and configs:
+
+- [**@typescript-eslint/eslint-plugin**](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin) : An ESLint plugin which provides lint rules for TypeScript codebases.
+
+- [**eslint-config-next**](https://www.npmjs.com/package/eslint-config-next) : Includes Next.js' base ESLint configuration along with a stricter Core Web Vitals rule-set.
+
+- [**eslint-plugin-import**](https://www.npmjs.com/package/eslint-plugin-import) : This plugin intends to support linting of ES2015+ (ES6+) import/export syntax, and prevent issues with misspelling of file paths and import names.
+- [**eslint-plugin-jsx-a11y**](https://www.npmjs.com/package/eslint-plugin-jsx-a11y) : Static AST checker for accessibility rules on JSX elements.
+- [**eslint-plugin-react**](https://www.npmjs.com/package/eslint-plugin-react) : React specific linting rules for eslint
+- [**eslint-plugin-react-hooks**](https://www.npmjs.com/package/eslint-plugin-react-hooks) : This ESLint plugin enforces the [Rules of Hooks](https://reactjs.org/docs/hooks-rules.html).
+- [**eslint-plugin-simple-import-sort**](https://www.npmjs.com/package/eslint-plugin-simple-import-sort) : Easy autofixable import sorting.
+
+- [**eslint-plugin-tailwindcss**](https://www.npmjs.com/package/eslint-plugin-tailwindcss) : Rules enforcing best practices and consistency using Tailwind CSS.
+
+### Style Reusability 🎨
+
+Next-Genesis makes it easy to manage styles and ensure reusability:
+
+- [**Tailwind CSS**](https://tailwindcss.com) : A utility-first CSS framework that simplifies styling and ensures a consistent look and feel across your application.
+
+- [**Class Variance Authority**](https://cva.style/docs) : A library that helps enforce class naming conventions , making it easier to manage your styles.
+
+- [**clsx**](https://github.com/lukeed/clsx#readme) : A utility for conditionally joining class names, making it simple to apply dynamic styles to your components.
+
+- [**Tailwind-Merge**](https://github.com/dcastil/tailwind-merge) : A library used for merging Tailwind CSS classes, enabling more dynamic and flexible styling.
+
+### Validation 🛡️
+
+- [**Zod**](https://zod.dev) : This is a TypeScript-first schema validation library.
+
+## Utilities 🧰
+
+- **cn** : A utility helper to conditionally join class names and merge tailwind classes without conflicts. _Inspired by shadcn/ui_.
+
+  ```javascript
+  import { type ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
+
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
+
+- **env** : An object that contains the project's environment variables validated by zod. Add fields to the `envSchema` object to match your `.env` file so that they can be validated.
+
+```javascript
+import z from "zod";
+
+const envSchema = z.object({
+	SOME_SECRET: z.string().nonempty(),
+	ANOTHER_SECRET: z.string().nonempty(),
+});
+
+export const env = envSchema.parse(process.env);
+```
+
+## Getting Started 🏁
+
+First, install the dependencies:
+
+```bash
+npm install
+```
+
+Next, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
