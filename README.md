@@ -78,16 +78,16 @@ Next-Genesis makes it easy to manage styles and ensure reusability:
 
 - **env** : An object that contains the project's environment variables validated by zod. Add fields to the `envSchema` object to match your `.env` file so that they can be validated.
 
-```javascript
-import z from "zod";
+  ```javascript
+  import z from "zod";
 
-const envSchema = z.object({
-	SOME_SECRET: z.string().nonempty(),
-	ANOTHER_SECRET: z.string().nonempty(),
-});
+  const envSchema = z.object({
+  	SOME_SECRET: z.string().nonempty(),
+  	ANOTHER_SECRET: z.string().nonempty(),
+  });
 
-export const env = envSchema.parse(process.env);
-```
+  export const env = envSchema.parse(process.env);
+  ```
 
 ## Getting Started 🏁
 
