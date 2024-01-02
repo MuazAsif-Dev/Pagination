@@ -7,3 +7,9 @@
 	--background-start-rgb: 214, 219, 220;
 	--background-end-rgb: 255, 255, 255;
 }
+
+@layer components {
+	.br500 {
+		@apply border-2 border-red-500;
+	}
+}
